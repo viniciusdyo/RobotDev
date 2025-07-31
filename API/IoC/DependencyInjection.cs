@@ -15,7 +15,7 @@ public static class DependencyInjection
         services.AddScoped<IEnderecoRepository, EnderecoRepository>();
         services.AddDbContext<RobotDevDbContext>(options =>
         {
-            options.UseNpgsql(configuration.GetConnectionString("DefaultConnection"));
+            options.UseMySql(configuration.GetConnectionString("MySQL"), ServerVersion.Parse("10.4.32-MariaDB"));
         });
 
     }
