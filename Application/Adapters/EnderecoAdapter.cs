@@ -12,6 +12,7 @@ public static class EnderecoAdapter
         model.CEP = endereco.CEP;
         model.Logradouro = endereco.Logradouro;
         model.UF = endereco.UF;
+        model.Bairro = endereco.Bairro;
         return model;
     }
 
@@ -22,6 +23,7 @@ public static class EnderecoAdapter
         entidade.CEP = enderecoModel.CEP;
         entidade.Logradouro = enderecoModel.Logradouro;
         entidade.UF = enderecoModel.UF;
+        entidade.Bairro = enderecoModel.Bairro;
         return entidade;
     }
 

@@ -20,11 +20,14 @@ public class EnderecoRepository(RobotDevDbContext context) : IEnderecoRepository
 
     public async Task<Endereco?> ObterCEPParaTratamentoAsync(string robo)
     {
-        var cep = await context.Enderecos.Where(x =>
-        (x.Status == Domain.Enums.EnumStatus.EmAndamento && x.Robo == robo)
-        || 
-        (x.Status == Domain.Enums.EnumStatus.Aberto && string.IsNullOrEmpty(x.Robo))
-        ).FirstOrDefaultAsync();
+        var cepExistente = await context.Enderecos.Where(
+        x => x.Status == Domain.Enums.EnumStatus.EmAndamento && x.Robo == robo).FirstOrDefaultAsync();
+
+        if (cepExistente != null)
+        {
+            return cepExistente;
+        }
+        var cep = await context.Enderecos.Where(x => x.Status == Domain.Enums.EnumStatus.Aberto && string.IsNullOrEmpty(x.Robo)).FirstOrDefaultAsync();
 
         return cep;
     }
