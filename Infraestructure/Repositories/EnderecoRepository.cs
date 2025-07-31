@@ -15,7 +15,7 @@ public class EnderecoRepository(RobotDevDbContext context) : IEnderecoRepository
     public async Task AtualizarDados(Endereco endereco)
     {
         context.Enderecos.Update(endereco);
-        await context.AddRangeAsync();
+        await context.SaveChangesAsync();
     }
 
     public async Task<Endereco?> ObterCEPParaTratamentoAsync(string robo)

@@ -21,7 +21,7 @@ public class EnderecoController(IEnderecoService service) : ControllerBase
     {
         await service.AtualizarDados(model);
         return Ok(new { Message = "Ceps atualizados com sucesso!" });
-    }
+   }
 
     [HttpGet]
     [Route("ObterCepParaTratamento")]

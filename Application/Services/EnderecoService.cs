@@ -19,9 +19,9 @@ public class EnderecoService(IEnderecoRepository enderecoRepository) : IEndereco
     {
         var domain = await enderecoRepository.ObterPorIdAsync(endereco.Id);
 
-        VerificarEnderecoNulo(domain); 
-
-        domain!.Logradouro = endereco.Logradouro;
+        VerificarEnderecoNulo(domain);
+        domain!.CEP = endereco.CEP;
+        domain.Logradouro = endereco.Logradouro;
         domain.Bairro = endereco.Bairro;
         domain.UF = endereco.UF;
         domain.Status = Domain.Enums.EnumStatus.Finalizado;
